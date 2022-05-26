@@ -33,6 +33,7 @@ $rules = [
 
 $errors = service('validate')->run($this->validate($rules));
         if($errors) {
-            return redirect()->back()->with('errors', $errors); // ShadeCMS original uses IziToast for message display
+            return redirect()->back()->with('errors', $errors); 
         }
 ```
+###### ShadeCMS original uses IziToast for message display: <a href="https://izitoast.marcelodolza.com/">Documenation</a>
