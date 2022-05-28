@@ -9,7 +9,7 @@ class Profilecontroller extends BaseController
     public function __construct() {
         $this->userModel = model('UserModel');
         $this->badgesModel = model('BadgeModel');
-		$this->reportModel = model('ReportModel');
+	$this->reportModel = model('ReportModel');
         }
 
     public function getProfile($username) {
@@ -29,23 +29,23 @@ class Profilecontroller extends BaseController
 	
 	public function reportPlayer($username) {
 		
-		$rules = [
-			'reason' => 'max_length[25]|required|min_length[10]'
+	$rules = [
+		'reason' => 'max_length[25]|required|min_length[10]'
         ];
 		
-		$user = $this->userModel->where('id', $this->session->get('user')->id)->first();
-		$userProfile = $this->userModel->where('username', $username)->first();
+	$user = $this->userModel->where('id', $this->session->get('user')->id)->first();
+	$userProfile = $this->userModel->where('username', $username)->first();
 		
-		$errors = service('validate')->run($this->validate($rules));
+	$errors = service('validate')->run($this->validate($rules));
         if($errors) {
             return redirect()->back()->with('errors', $errors);
         }
 		
-		if(!$user) {
+	if(!$user) {
             return redirect()->back()->with('errors', lang('You must be logged in to report this user.'));
         }
 		
-		$data = [
+	$data = [
             'reporter_id'  => $user->id,
             'reporter_name'      => $user->username,
             'report_context'  => $this->request->getVar('reason', FILTER_SANITIZE_STRING),
@@ -53,8 +53,8 @@ class Profilecontroller extends BaseController
             'reported_name' => $userProfile->username
         ];
 		
-		$this->reportModel->insert($data);
-		return redirect()->back()->with('success', lang('Player reported with success'));
+	$this->reportModel->insert($data);
+	return redirect()->back()->with('success', lang('Player reported with success'));
 	}
 
 }
