@@ -34,7 +34,7 @@ class BadgeShopController extends BaseController
         $badgePurchase = $this->badgeShopModel->where('badge_code', $badgeCode)->first();
 
         $purchase = [
-            'user_id'     =>  $this->getSessionId,
+            'user_id'     =>  $this->getSessionId(),
             'badge_code'  => $badgeCode,
         ];
         
