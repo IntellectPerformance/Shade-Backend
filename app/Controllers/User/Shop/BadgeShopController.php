@@ -35,7 +35,7 @@ class BadgeShopController extends BaseController
 
         $purchase = [
             'user_id'     =>  $this->getSessionId(),
-            'badge_code'  => $badgeCode,
+            'badge_code'  =>  $badgeCode,
         ];
         
         $checkAlreadyOwned = $this->badgeModel->where($purchase)->findAll();
