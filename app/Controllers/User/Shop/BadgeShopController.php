@@ -22,9 +22,9 @@ class BadgeShopController extends BaseController
 	
 	public function getSessionId() {
 		
-		$userId = $this->session->get('user')->username;
+	   $userId = $this->session->get('user')->username;
 		
-		return $userId;
+	   return $userId;
 	}
 
     public function buyBadge($badgeCode) {
@@ -41,7 +41,9 @@ class BadgeShopController extends BaseController
         $checkAlreadyOwned = $this->badgeModel->where($purchase)->findAll();
 
         if (!$badgePurchase) {
-            return redirect()->back()->with('errors', lang('This badge is not even in the shop'));
+            return redirect()->back()->with(
+		    'errors', 
+		    lang('This badge is not even in the shop'));
         }
 
         if (!$user->online) 
@@ -51,10 +53,17 @@ class BadgeShopController extends BaseController
                 $mathOperator = $user->points - $badgePurchase->price;
                 $this->badgeModel->insert($purchase);
                 $this->userModel->update($user->id, ['points' => $mathOperator]);
-                return redirect()->back()->with('success', lang('Succesfully bought the badge'));
+		
+                return redirect()->back()->with(
+			'success', 
+			lang('Succesfully bought the badge'));
             }
-            return redirect()->back()->with('errors', lang('Not enough diamonds or you already have this badge'));
+            return redirect()->back()->with(
+		    'errors', 
+		    lang('Not enough diamonds or you already have this badge'));
         }
-        return redirect()->back()->with('errors', lang('You first need to be offline to purchase a badge.'));
+        return redirect()->back()->with(
+		'errors', 
+		lang('You first need to be offline to purchase a badge.'));
     }
 }
