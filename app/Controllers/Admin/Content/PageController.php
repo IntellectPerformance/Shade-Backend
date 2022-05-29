@@ -8,8 +8,7 @@ class PageController extends BaseController
 {
     public function dashboard() {
 
-		return view('admin/dashboard/information');
-
+	return view('admin/dashboard/information');
     }
-
+	
 }
