@@ -37,3 +37,13 @@ $errors = service('validate')->run($this->validate($rules));
         }
 ```
 ###### ShadeCMS original uses IziToast for message display: <a href="https://izitoast.marcelodolza.com/">Documenation</a>
+
+#### Backend Functions
+ 
+Login: 		100% <br>
+Register: 	100% <br>
+SSO Generation: 100% <br>
+BadgeShop: 	100% <br>
+RCON: 		100% <br>
+Staff Login: 	100% <br>
+
