@@ -20,12 +20,12 @@ class BadgeShopController extends BaseController
         return view('user/shop/badgeshop', ['shopBadges' => $shopBadges]);
     }
 	
-	public function getSessionId() {
+    public function getSessionId() {
 		
-	   $userId = $this->session->get('user')->username;
+	 $userId = $this->session->get('user')->username;
 		
-	   return $userId;
-	}
+	 return $userId;
+    }
 
     public function buyBadge($badgeCode) {
 
