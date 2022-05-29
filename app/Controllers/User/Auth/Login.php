@@ -40,8 +40,8 @@ class Login extends BaseController
         }
 
         if($this->validate($rules) 
-			&& $user 
-			&& password_verify($password, $user->password)) 
+		&& $user 
+		&& password_verify($password, $user->password)) 
 		{
             $this->session->set(
                 'user',
